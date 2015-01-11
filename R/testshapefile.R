@@ -1,6 +1,6 @@
 # Team: ZeaPol   
 # Team Members: Roeland de Koning / Barbara Sienkiewicz    
-# Date: 08/01/2015       
+# Date: 11/01/2015       
 # Exercise 5
 
 railway2 = readOGR("data/","railways.shp")

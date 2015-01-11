@@ -1,6 +1,6 @@
 # Team: ZeaPol   
 # Team Members: Roeland de Koning / Barbara Sienkiewicz    
-# Date: 08/01/2015       
+# Date: 11/01/2015       
 # Exercise 5
 
 <<<<<<< HEAD
@@ -10,16 +10,14 @@ library(rgdal)
 library(rgeos)
 library(maptools)
 
-source('R/ZipfileDownloader.R')
+source('R/1_ZipFileDownloader.R')
+source('R/2_ReadOGR.R')
 
-ZipfileDownloader("http://www.mapcruzin.com/download-shapefile/netherlands-places-shape.zip","data/","netherlands-places-shape.zip")
-ZipfileDownloader("http://www.mapcruzin.com/download-shapefile/netherlands-railways-shape.zip","data/","netherlands-railways-shape.zip")
+ZipFileDownloader("http://www.mapcruzin.com/download-shapefile/netherlands-places-shape.zip","data/","netherlands-places-shape.zip")
+ZipFileDownloader("http://www.mapcruzin.com/download-shapefile/netherlands-railways-shape.zip","data/","netherlands-railways-shape.zip")
 
-railways<-list.files("data/", pattern = glob2rx("*railways.shp"),full.names = TRUE)
-places<-list.files("data/",pattern = glob2rx("*places.shp"),full.names = TRUE)
-
-railwaysshp<-readOGR(railways, layer=ogrListLayers(railways))
-placesshp<-readOGR(places, layer=ogrListLayers(places))
+railways <- readSHP("data/", "*railways.shp")
+places <- readSHP("data/", "*places.shp")
 
 plot(places)
 plot(railways)
