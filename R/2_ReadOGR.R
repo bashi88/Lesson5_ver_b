@@ -3,7 +3,7 @@
 # Date: 11/01/2015       
 # Exercise 5
 
-# 
+# Function to read .shp file
 
 
 readSHP <- function(FolderLocation, Pattern) {
@@ -13,5 +13,3 @@ readSHP <- function(FolderLocation, Pattern) {
   readSHP <- readOGR(listSHP, layer=ogrListLayers(listSHP))
     
 }
-
-readSHP ("data/", "*railways.shp")

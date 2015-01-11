@@ -4,7 +4,6 @@
 # Exercise 5
 
 # Function to download and extract specified zip files to the data folder of R projects
-# may need adjustment
 
 
 ZipFileDownloader <- function(url, filedestination, filename) {
@@ -23,6 +22,3 @@ ZipFileDownloader <- function(url, filedestination, filename) {
   file.remove(zip)
 
 }
-
-
-
