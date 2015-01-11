@@ -56,7 +56,7 @@ placesRD@data[locationinfo]
 # Create a plot that shows the buffer, the points, and the name of the city
 # and saving in as png into output polder
 png(filename="output/plot.png")
-buffer <- plot(BufferIndustrial, main = "Utrecht", bg = "darkolivegreen4")
+buffer <- plot(BufferIndustrial, main = "The intersecting city: Utrecht", bg = "darkolivegreen4")
 places <- plot(IntersectingPlaces, add = TRUE, pch=21, col="grey0", bg="lightblue3", cex = 5)
 grid()
 box()
