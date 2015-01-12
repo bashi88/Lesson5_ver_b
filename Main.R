@@ -34,7 +34,7 @@ plot(places)
 plot(railways)
 
 # Plot rail tracks with type "industrial":
-IndustrialRail <- railwaysshp[railwaysshp$type == "industrial",]
+IndustrialRail <- railways[railways$type == "industrial",]
 plot(IndustrialRail)
 
 # Industrial rail reprojected into RD:
@@ -47,20 +47,25 @@ BufferIndustrial <- gBuffer(IndustrialRailRD, byid=TRUE, width=1000)
 plot(BufferIndustrial)
 
 # Find the place (i.e. a city) that intersects with this buffer
-IntersectingPlaces <- gIntersection(BufferIndustrial, placesRD)
+IntersectingPlaces <- gIntersection(BufferIndustrial, PlacesRD)
 
 # The information about place's name and polulation:
-locationinfo <- gIntersects(BufferIndustrial, placesRD, byid=TRUE)
-placesRD@data[locationinfo]
+locationinfo <- gIntersects(BufferIndustrial, PlacesRD, byid=TRUE)
+PlacesRD@data[locationinfo]
 
 # Create a plot that shows the buffer, the points, and the name of the city
-# and saving in as png into output polder
+# and saving in as png into output folder
+#both spplot and plot package used plot preffered and stored
+
+spplot(BufferIndustrial,main='Industrial Rail within Utrecht',zcol = "type",col.regions=c("gray60", "gray40"),sp.layout=list(list("sp.points", IntersectingPlaces, col= "red", pch=19, cex=1.5)))
+
 png(filename="output/plot.png")
 buffer <- plot(BufferIndustrial, main = "The intersecting city: Utrecht", bg = "darkolivegreen4")
 places <- plot(IntersectingPlaces, add = TRUE, pch=21, col="grey0", bg="lightblue3", cex = 5)
 grid()
 box()
 dev.off()
+
 
 # The name of the intersecting city: Utrecht
 # Population of the intersecting city: 100,000
